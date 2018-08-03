@@ -12,7 +12,7 @@ class MqttMessageQueue extends pip_services_messaging_node_1.MessageQueue {
         this._optionsResolver = new MqttConnectionResolver_1.MqttConnectionResolver();
         this._capabilities = new pip_services_messaging_node_3.MessagingCapabilities(false, true, true, true, true, false, false, false, true);
     }
-    isOpened() {
+    isOpen() {
         return this._client != null;
     }
     openWithParams(correlationId, connection, credential, callback) {

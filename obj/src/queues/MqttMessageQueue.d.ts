@@ -11,7 +11,7 @@ export declare class MqttMessageQueue extends MessageQueue {
     private _receiver;
     private _messages;
     constructor(name?: string);
-    isOpened(): boolean;
+    isOpen(): boolean;
     protected openWithParams(correlationId: string, connection: ConnectionParams, credential: CredentialParams, callback: (err: any) => void): void;
     close(correlationId: string, callback: (err: any) => void): void;
     clear(correlationId: string, callback: (err?: any) => void): void;

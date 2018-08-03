@@ -23,7 +23,7 @@ export class MqttMessageQueue extends MessageQueue {
         this._capabilities = new MessagingCapabilities(false, true, true, true, true, false, false, false, true);
     }
 
-    public isOpened(): boolean {
+    public isOpen(): boolean {
         return this._client != null;
     }
 
