@@ -10,18 +10,55 @@ import { CredentialResolver } from 'pip-services-components-node';
 import { ConnectionParams } from 'pip-services-components-node';
 import { CredentialParams } from 'pip-services-components-node';
 
+/**
+ * Helper class that resolves MQTT connection and credential parameters,
+ * validates them and generates connection options.
+ * 
+ *  ### Configuration parameters ###
+ * 
+ * connection(s):
+ *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *   host:                        host name or IP address
+ *   port:                        port number
+ *   uri:                         resource URI or connection string with all parameters in it
+ * credential(s):
+ *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *   username:                    user name
+ *   password:                    user password
+ * 
+ * ### References ###
+ * 
+ * - *:discovery:*:*:1.0          (optional) IDiscovery services to resolve connections
+ * - *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
+ */
 export class MqttConnectionResolver implements IReferenceable, IConfigurable {
+    /** 
+     * The connections resolver.
+     */
     protected _connectionResolver: ConnectionResolver = new ConnectionResolver();
+    /** 
+     * The credentials resolver.
+     */
     protected _credentialResolver: CredentialResolver = new CredentialResolver();
 
-    public setReferences(references: IReferences): void {
-        this._connectionResolver.setReferences(references);
-        this._credentialResolver.setReferences(references);
-    }
-
+    /**
+     * Configures component by passing configuration parameters.
+     * 
+     * @param config    configuration parameters to be set.
+     */
     public configure(config: ConfigParams): void {
         this._connectionResolver.configure(config);
         this._credentialResolver.configure(config);
+    }
+
+    /**
+	 * Sets references to dependent components.
+	 * 
+	 * @param references 	references to locate the component dependencies. 
+     */
+    public setReferences(references: IReferences): void {
+        this._connectionResolver.setReferences(references);
+        this._credentialResolver.setReferences(references);
     }
 
     private validateConnection(correlationId: string, connection: ConnectionParams): any {
@@ -60,6 +97,12 @@ export class MqttConnectionResolver implements IReferenceable, IConfigurable {
         return options;
     }
 
+    /**
+     * Resolves MQTT connection options from connection and credential parameters.
+     * 
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives resolved options or error.
+     */
     public resolve(correlationId: string, callback: (err: any, options: any) => void): void {
         let connection: ConnectionParams;
         let credential: CredentialParams;
@@ -94,6 +137,14 @@ export class MqttConnectionResolver implements IReferenceable, IConfigurable {
         });
     }
 
+    /**
+     * Composes MQTT connection options from connection and credential parameters.
+     * 
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param connection        connection parameters
+     * @param credential        credential parameters
+     * @param callback 			callback function that receives resolved options or error.
+     */
     public compose(correlationId: string, connection: ConnectionParams, credential: CredentialParams,
         callback: (err: any, options: any) => void): void {
 

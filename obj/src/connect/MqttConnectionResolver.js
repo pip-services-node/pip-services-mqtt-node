@@ -4,18 +4,55 @@ let async = require('async');
 const pip_services_commons_node_1 = require("pip-services-commons-node");
 const pip_services_components_node_1 = require("pip-services-components-node");
 const pip_services_components_node_2 = require("pip-services-components-node");
+/**
+ * Helper class that resolves MQTT connection and credential parameters,
+ * validates them and generates connection options.
+ *
+ *  ### Configuration parameters ###
+ *
+ * connection(s):
+ *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *   host:                        host name or IP address
+ *   port:                        port number
+ *   uri:                         resource URI or connection string with all parameters in it
+ * credential(s):
+ *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *   username:                    user name
+ *   password:                    user password
+ *
+ * ### References ###
+ *
+ * - *:discovery:*:*:1.0          (optional) IDiscovery services to resolve connections
+ * - *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
+ */
 class MqttConnectionResolver {
     constructor() {
+        /**
+         * The connections resolver.
+         */
         this._connectionResolver = new pip_services_components_node_1.ConnectionResolver();
+        /**
+         * The credentials resolver.
+         */
         this._credentialResolver = new pip_services_components_node_2.CredentialResolver();
     }
-    setReferences(references) {
-        this._connectionResolver.setReferences(references);
-        this._credentialResolver.setReferences(references);
-    }
+    /**
+     * Configures component by passing configuration parameters.
+     *
+     * @param config    configuration parameters to be set.
+     */
     configure(config) {
         this._connectionResolver.configure(config);
         this._credentialResolver.configure(config);
+    }
+    /**
+     * Sets references to dependent components.
+     *
+     * @param references 	references to locate the component dependencies.
+     */
+    setReferences(references) {
+        this._connectionResolver.setReferences(references);
+        this._credentialResolver.setReferences(references);
     }
     validateConnection(correlationId, connection) {
         if (connection == null)
@@ -45,6 +82,12 @@ class MqttConnectionResolver {
         }
         return options;
     }
+    /**
+     * Resolves MQTT connection options from connection and credential parameters.
+     *
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param callback 			callback function that receives resolved options or error.
+     */
     resolve(correlationId, callback) {
         let connection;
         let credential;
@@ -74,6 +117,14 @@ class MqttConnectionResolver {
             }
         });
     }
+    /**
+     * Composes MQTT connection options from connection and credential parameters.
+     *
+     * @param correlationId     (optional) transaction id to trace execution through call chain.
+     * @param connection        connection parameters
+     * @param credential        credential parameters
+     * @param callback 			callback function that receives resolved options or error.
+     */
     compose(correlationId, connection, credential, callback) {
         // Validate connections
         let err = this.validateConnection(correlationId, connection);
