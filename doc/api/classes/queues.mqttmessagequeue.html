@@ -54,7 +54,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="mqttmessagequeue.html">MqttMessageQueue</a>
+					<a href="../modules/queues.html">queues</a>
+				</li>
+				<li>
+					<a href="queues.mqttmessagequeue.html">MqttMessageQueue</a>
 				</li>
 			</ul>
 			<h1>Class MqttMessageQueue</h1>
@@ -64,6 +67,58 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-comment">
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Message queue that sends and receives messages via MQTT message broker.</p>
+					</div>
+					<p>MQTT is a popular light-weight protocol to communicate IoT devices.</p>
+					<h3 id="configuration-parameters">Configuration parameters</h3>
+					<p>topic:                         name of MQTT topic to subscribe
+						connection(s):
+						discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+						host:                        host name or IP address
+						port:                        port number
+						uri:                         resource URI or connection string with all parameters in it
+						credential(s):
+						store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+						username:                    user name
+					password:                    user password</p>
+					<h3 id="references">References</h3>
+					<ul>
+						<li><em>:logger:</em>:*:1.0             (optional) ILogger components to pass log messages</li>
+						<li><em>:counters:</em>:*:1.0           (optional) ICounters components to pass collected measurements</li>
+						<li><em>:discovery:</em>:*:1.0          (optional) IDiscovery services to resolve connections</li>
+						<li><em>:credential-store:</em>:*:1.0   (optional) Credential stores to resolve credentials</li>
+					</ul>
+					<dl class="tsd-comment-tags">
+						<dt>see</dt>
+						<dd><p>[[MessageQueue]]</p>
+						</dd>
+						<dt>see</dt>
+						<dd><p>[[MessagingCapabilities]]</p>
+							<h3 id="example">Example</h3>
+							<p>let queue = new MqttMessageQueue(&quot;myqueue&quot;);
+								queue.configure(ConfigParams.fromTuples(
+								&quot;topic&quot;, &quot;mytopic&quot;,
+								&quot;connection.protocol&quot;, &quot;mqtt&quot;
+								&quot;connection.host&quot;, &quot;localhost&quot;
+								&quot;connection.port&quot;, 1883
+							));</p>
+							<p>queue.open(&quot;123&quot;, (err) =&gt; {
+								...
+							});</p>
+							<p>queue.send(&quot;123&quot;, new MessageEnvelop(null, &quot;mymessage&quot;, &quot;ABC&quot;));</p>
+							<p>queue.receive(&quot;123&quot;, (err, message) =&gt; {
+								if (message != null) {
+								...
+								queue.complete(&quot;123&quot;, message);
+								}
+							});</p>
+						</dd>
+					</dl>
+				</div>
+			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
@@ -92,54 +147,47 @@
 						<section class="tsd-index-section ">
 							<h3>Constructors</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#constructor" class="tsd-kind-icon">constructor</a></li>
+								<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#constructor" class="tsd-kind-icon">constructor</a></li>
 							</ul>
 						</section>
-						<section class="tsd-index-section tsd-is-private-protected">
+						<section class="tsd-index-section tsd-is-inherited tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_capabilities" class="tsd-kind-icon">_capabilities</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_client" class="tsd-kind-icon">_client</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_connectionresolver" class="tsd-kind-icon">_connection<wbr>Resolver</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_counters" class="tsd-kind-icon">_counters</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_credentialresolver" class="tsd-kind-icon">_credential<wbr>Resolver</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_logger" class="tsd-kind-icon">_logger</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_messages" class="tsd-kind-icon">_messages</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="mqttmessagequeue.html#_name" class="tsd-kind-icon">_name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_optionsresolver" class="tsd-kind-icon">_options<wbr>Resolver</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_receiver" class="tsd-kind-icon">_receiver</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_subscribed" class="tsd-kind-icon">_subscribed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#_topic" class="tsd-kind-icon">_topic</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_capabilities" class="tsd-kind-icon">_capabilities</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_connectionresolver" class="tsd-kind-icon">_connection<wbr>Resolver</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_counters" class="tsd-kind-icon">_counters</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_credentialresolver" class="tsd-kind-icon">_credential<wbr>Resolver</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_logger" class="tsd-kind-icon">_logger</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected"><a href="queues.mqttmessagequeue.html#_name" class="tsd-kind-icon">_name</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#abandon" class="tsd-kind-icon">abandon</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#beginlisten" class="tsd-kind-icon">begin<wbr>Listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#clear" class="tsd-kind-icon">clear</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#close" class="tsd-kind-icon">close</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#complete" class="tsd-kind-icon">complete</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#configure" class="tsd-kind-icon">configure</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#endlisten" class="tsd-kind-icon">end<wbr>Listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#getcapabilities" class="tsd-kind-icon">get<wbr>Capabilities</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#getname" class="tsd-kind-icon">get<wbr>Name</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#isopened" class="tsd-kind-icon">is<wbr>Opened</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#listen" class="tsd-kind-icon">listen</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#movetodeadletter" class="tsd-kind-icon">move<wbr>ToDead<wbr>Letter</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#open" class="tsd-kind-icon">open</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="mqttmessagequeue.html#openwithparams" class="tsd-kind-icon">open<wbr>With<wbr>Params</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#peek" class="tsd-kind-icon">peek</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#peekbatch" class="tsd-kind-icon">peek<wbr>Batch</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#readmessagecount" class="tsd-kind-icon">read<wbr>Message<wbr>Count</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#receive" class="tsd-kind-icon">receive</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#renewlock" class="tsd-kind-icon">renew<wbr>Lock</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="mqttmessagequeue.html#send" class="tsd-kind-icon">send</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#sendasobject" class="tsd-kind-icon">send<wbr>AsObject</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#setreferences" class="tsd-kind-icon">set<wbr>References</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="mqttmessagequeue.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><a href="mqttmessagequeue.html#tomessage" class="tsd-kind-icon">to<wbr>Message</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="mqttmessagequeue.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#abandon" class="tsd-kind-icon">abandon</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#beginlisten" class="tsd-kind-icon">begin<wbr>Listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#clear" class="tsd-kind-icon">clear</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#close" class="tsd-kind-icon">close</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#complete" class="tsd-kind-icon">complete</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#configure" class="tsd-kind-icon">configure</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#endlisten" class="tsd-kind-icon">end<wbr>Listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#getcapabilities" class="tsd-kind-icon">get<wbr>Capabilities</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#getname" class="tsd-kind-icon">get<wbr>Name</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#isopen" class="tsd-kind-icon">is<wbr>Open</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#listen" class="tsd-kind-icon">listen</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#movetodeadletter" class="tsd-kind-icon">move<wbr>ToDead<wbr>Letter</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#open" class="tsd-kind-icon">open</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected"><a href="queues.mqttmessagequeue.html#openwithparams" class="tsd-kind-icon">open<wbr>With<wbr>Params</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#peek" class="tsd-kind-icon">peek</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#peekbatch" class="tsd-kind-icon">peek<wbr>Batch</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#readmessagecount" class="tsd-kind-icon">read<wbr>Message<wbr>Count</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#receive" class="tsd-kind-icon">receive</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#renewlock" class="tsd-kind-icon">renew<wbr>Lock</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="queues.mqttmessagequeue.html#send" class="tsd-kind-icon">send</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#sendasobject" class="tsd-kind-icon">send<wbr>AsObject</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#setreferences" class="tsd-kind-icon">set<wbr>References</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><a href="queues.mqttmessagequeue.html#subscribe" class="tsd-kind-icon">subscribe</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="queues.mqttmessagequeue.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
 							</ul>
 						</section>
 					</div>
@@ -151,28 +199,38 @@
 					<a name="constructor" class="tsd-anchor"></a>
 					<h3>constructor</h3>
 					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Mqtt<wbr>Message<wbr>Queue<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="mqttmessagequeue.html" class="tsd-signature-type">MqttMessageQueue</a></li>
+						<li class="tsd-signature tsd-kind-icon">new <wbr>Mqtt<wbr>Message<wbr>Queue<span class="tsd-signature-symbol">(</span>name<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="queues.mqttmessagequeue.html" class="tsd-signature-type">MqttMessageQueue</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.__constructor</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:19</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L72">queues/MqttMessageQueue.ts:72</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates a new instance of the message queue.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> name: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>(optional) a queue name.</p>
+										</div>
+									</div>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="mqttmessagequeue.html" class="tsd-signature-type">MqttMessageQueue</a></h4>
+							<h4 class="tsd-returns-title">Returns <a href="queues.mqttmessagequeue.html" class="tsd-signature-type">MqttMessageQueue</a></h4>
 						</li>
 					</ul>
 				</section>
 			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private-protected">
+			<section class="tsd-panel-group tsd-member-group tsd-is-inherited tsd-is-private-protected">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
 					<a name="_capabilities" class="tsd-anchor"></a>
@@ -181,17 +239,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._capabilities</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:21</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_client" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _client</h3>
-					<div class="tsd-signature tsd-kind-icon">_client<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">any</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:14</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:21</li>
 						</ul>
 					</aside>
 				</section>
@@ -202,7 +250,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._connectionResolver</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:18</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:18</li>
 						</ul>
 					</aside>
 				</section>
@@ -213,7 +261,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._counters</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:17</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:17</li>
 						</ul>
 					</aside>
 				</section>
@@ -224,7 +272,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._credentialResolver</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:19</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:19</li>
 						</ul>
 					</aside>
 				</section>
@@ -235,17 +283,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._logger</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:16</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_messages" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _messages</h3>
-					<div class="tsd-signature tsd-kind-icon">_messages<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">MessageEnvelop</span><span class="tsd-signature-symbol">[]</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:19</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:16</li>
 						</ul>
 					</aside>
 				</section>
@@ -256,47 +294,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from MessageQueue._name</p>
 						<ul>
-							<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:20</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_optionsresolver" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _options<wbr>Resolver</h3>
-					<div class="tsd-signature tsd-kind-icon">_options<wbr>Resolver<span class="tsd-signature-symbol">:</span> <a href="mqttconnectionresolver.html" class="tsd-signature-type">MqttConnectionResolver</a><span class="tsd-signature-symbol"> =&nbsp;new MqttConnectionResolver()</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:17</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_receiver" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _receiver</h3>
-					<div class="tsd-signature tsd-kind-icon">_receiver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">IMessageReceiver</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:18</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_subscribed" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _subscribed</h3>
-					<div class="tsd-signature tsd-kind-icon">_subscribed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> =&nbsp;false</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:16</li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="_topic" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> _topic</h3>
-					<div class="tsd-signature tsd-kind-icon">_topic<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in queues/MqttMessageQueue.ts:15</li>
+							<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:20</li>
 						</ul>
 					</aside>
 				</section>
@@ -314,16 +312,31 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.abandon</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:149</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L298">queues/MqttMessageQueue.ts:298</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returnes message into the queue and makes it available for all subscribers to receive it again.
+										This method is usually used to return a message which could not be processed at the moment
+										to repeat the attempt. Messages that cause unrecoverable errors shall be removed permanently
+									or/and send to dead letter queue.</p>
+								</div>
+								<p>Important: This method is not supported by MQTT.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <span class="tsd-signature-type">MessageEnvelop</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a message to return.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) callback function that receives an error or null for success.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -359,7 +372,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.beginListen</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:44</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:44</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -386,16 +399,27 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.clear</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:67</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L150">queues/MqttMessageQueue.ts:150</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Clears component state.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives error or null no errors occured.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -431,16 +455,27 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.close</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:53</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L130">queues/MqttMessageQueue.ts:130</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Closes component and frees used resources.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives error or null no errors occured.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -476,16 +511,29 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.complete</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:144</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L282">queues/MqttMessageQueue.ts:282</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Permanently removes a message from the queue.
+									This method is usually used to remove the message after successful processing.</p>
+								</div>
+								<p>Important: This method is not supported by MQTT.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <span class="tsd-signature-type">MessageEnvelop</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a message to remove.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) callback function that receives an error or null for success.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -521,7 +569,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.configure</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:26</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:26</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -545,13 +593,22 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.endListen</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:224</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L399">queues/MqttMessageQueue.ts:399</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Ends listening for incoming messages.
+									When this method is call <a href="queues.mqttmessagequeue.html#listen">listen</a> unblocks the thread and execution continues.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -569,7 +626,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.getCapabilities</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:24</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:24</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MessagingCapabilities</span></h4>
@@ -587,7 +644,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.getName</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:23</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:23</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -595,20 +652,26 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-					<a name="isopened" class="tsd-anchor"></a>
-					<h3>is<wbr>Opened</h3>
+					<a name="isopen" class="tsd-anchor"></a>
+					<h3>is<wbr>Open</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-						<li class="tsd-signature tsd-kind-icon">is<wbr>Opened<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Open<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.isOpen</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:26</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L89">queues/MqttMessageQueue.ts:89</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Checks if the component is opened.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+							<p>true if the component has been opened and false otherwise.</p>
 						</li>
 					</ul>
 				</section>
@@ -623,16 +686,35 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.listen</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:203</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L372">queues/MqttMessageQueue.ts:372</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Listens for incoming messages and blocks the current thread until queue is closed.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>see</dt>
+									<dd><p>[[IMessageReceiver]]</p>
+									</dd>
+									<dt>see</dt>
+									<dd><p><a href="queues.mqttmessagequeue.html#receive">receive</a></p>
+									</dd>
+								</dl>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>receiver: <span class="tsd-signature-type">IMessageReceiver</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a receiver to receive incoming messages.</p>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -650,16 +732,28 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.moveToDeadLetter</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:154</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L311">queues/MqttMessageQueue.ts:311</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Permanently removes a message from the queue and sends it to dead letter queue.</p>
+								</div>
+								<p>Important: This method is not supported by MQTT.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <span class="tsd-signature-type">MessageEnvelop</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a message to be removed.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) callback function that receives an error or null for success.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -695,7 +789,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.open</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:27</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:27</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -740,22 +834,39 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.openWithParams</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:30</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L101">queues/MqttMessageQueue.ts:101</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Opens the component with given connection and credential parameters.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>connection: <span class="tsd-signature-type">ConnectionParams</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>connection parameters</p>
+									</div>
 								</li>
 								<li>
 									<h5>credential: <span class="tsd-signature-type">CredentialParams</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>credential parameters</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives error or null no errors occured.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -791,16 +902,28 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.peek</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:87</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L189">queues/MqttMessageQueue.ts:189</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Peeks a single incoming message from the queue without removing it.
+									If there are no messages available in the queue it returns null.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives a message or error.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -839,19 +962,35 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.peekBatch</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:96</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L208">queues/MqttMessageQueue.ts:208</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Peeks multiple incoming messages from the queue without removing them.
+									If there are no messages available in the queue it returns an empty list.</p>
+								</div>
+								<p>Important: This method is not supported by MQTT.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>messageCount: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a maximum number of messages to peek.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives a list with messages or error.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -890,13 +1029,21 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.readMessageCount</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:72</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L160">queues/MqttMessageQueue.ts:160</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Reads the current number of messages in the queue to be delivered.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives number of messages or error.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -935,19 +1082,33 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.receive</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:103</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L222">queues/MqttMessageQueue.ts:222</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Receives an incoming message and removes it from the queue.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>waitTimeout: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a timeout in milliseconds to wait for a message to come.</p>
+									</div>
 								</li>
 								<li>
 									<h5>callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>callback function that receives a message or error.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -986,19 +1147,35 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.renewLock</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:139</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L268">queues/MqttMessageQueue.ts:268</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Renews a lock on a message that makes it invisible from other receivers in the queue.
+									This method is usually used to extend the message processing time.</p>
+								</div>
+								<p>Important: This method is not supported by MQTT.</p>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>message: <span class="tsd-signature-type">MessageEnvelop</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a message to extend its lock.</p>
+									</div>
 								</li>
 								<li>
 									<h5>lockTimeout: <span class="tsd-signature-type">number</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>a locking timeout in milliseconds.</p>
+									</div>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) callback function that receives an error or null for success.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -1034,19 +1211,30 @@
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.send</p>
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:80</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L175">queues/MqttMessageQueue.ts:175</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Sends a message into the queue.</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>correlationId: <span class="tsd-signature-type">string</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) transaction id to trace execution through call chain.</p>
+									</div>
 								</li>
 								<li>
 									<h5>envelop: <span class="tsd-signature-type">MessageEnvelop</span></h5>
 								</li>
 								<li>
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> callback: <span class="tsd-signature-type">function</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>(optional) callback function that receives error or null for success.</p>
+									</div>
 									<ul class="tsd-parameters">
 										<li class="tsd-parameter-siganture">
 											<ul class="tsd-signatures tsd-kind-type-literal tsd-is-not-exported">
@@ -1082,7 +1270,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.sendAsObject</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:34</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:34</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1133,7 +1321,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.setReferences</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:25</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:25</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -1156,39 +1344,15 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:165</li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/queues/MqttMessageQueue.ts#L325">queues/MqttMessageQueue.ts:325</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Subscribes to the topic.</p>
+								</div>
+							</div>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private">
-					<a name="tomessage" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> to<wbr>Message</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private">
-						<li class="tsd-signature tsd-kind-icon">to<wbr>Message<span class="tsd-signature-symbol">(</span>topic<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, message<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, packet<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MessageEnvelop</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in queues/MqttMessageQueue.ts:159</li>
-								</ul>
-							</aside>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>topic: <span class="tsd-signature-type">string</span></h5>
-								</li>
-								<li>
-									<h5>message: <span class="tsd-signature-type">any</span></h5>
-								</li>
-								<li>
-									<h5>packet: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MessageEnvelop</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1203,7 +1367,7 @@
 							<aside class="tsd-sources">
 								<p>Inherited from MessageQueue.toString</p>
 								<ul>
-									<li>Defined in /Users/seroukhov/Projects/pip-services-node-ws/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:45</li>
+									<li>Defined in /Users/mac/PipServices/PipServices v3.0/pip-services-mqtt-node/node_modules/pip-services-messaging-node/obj/src/queues/MessageQueue.d.ts:45</li>
 								</ul>
 							</aside>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -1218,142 +1382,124 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/build.html">build</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/connect.html">connect</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/index.html">index</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/queues.html">queues</a>
+					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class">
-						<a href="defaultmqttfactory.html" class="tsd-kind-icon">Default<wbr>Mqtt<wbr>Factory</a>
-					</li>
-					<li class=" tsd-kind-class">
-						<a href="mqttconnectionresolver.html" class="tsd-kind-icon">Mqtt<wbr>Connection<wbr>Resolver</a>
-					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class">
-						<a href="mqttmessagequeue.html" class="tsd-kind-icon">Mqtt<wbr>Message<wbr>Queue</a>
+					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+						<a href="queues.mqttmessagequeue.html" class="tsd-kind-icon">Mqtt<wbr>Message<wbr>Queue</a>
 						<ul>
 							<li class=" tsd-kind-constructor tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#constructor" class="tsd-kind-icon">constructor</a>
+								<a href="queues.mqttmessagequeue.html#constructor" class="tsd-kind-icon">constructor</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_capabilities" class="tsd-kind-icon">_capabilities</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_client" class="tsd-kind-icon">_client</a>
+								<a href="queues.mqttmessagequeue.html#_capabilities" class="tsd-kind-icon">_capabilities</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_connectionresolver" class="tsd-kind-icon">_connection<wbr>Resolver</a>
+								<a href="queues.mqttmessagequeue.html#_connectionresolver" class="tsd-kind-icon">_connection<wbr>Resolver</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_counters" class="tsd-kind-icon">_counters</a>
+								<a href="queues.mqttmessagequeue.html#_counters" class="tsd-kind-icon">_counters</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_credentialresolver" class="tsd-kind-icon">_credential<wbr>Resolver</a>
+								<a href="queues.mqttmessagequeue.html#_credentialresolver" class="tsd-kind-icon">_credential<wbr>Resolver</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_logger" class="tsd-kind-icon">_logger</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_messages" class="tsd-kind-icon">_messages</a>
+								<a href="queues.mqttmessagequeue.html#_logger" class="tsd-kind-icon">_logger</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-inherited tsd-is-protected">
-								<a href="mqttmessagequeue.html#_name" class="tsd-kind-icon">_name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_optionsresolver" class="tsd-kind-icon">_options<wbr>Resolver</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_receiver" class="tsd-kind-icon">_receiver</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_subscribed" class="tsd-kind-icon">_subscribed</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#_topic" class="tsd-kind-icon">_topic</a>
+								<a href="queues.mqttmessagequeue.html#_name" class="tsd-kind-icon">_name</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#abandon" class="tsd-kind-icon">abandon</a>
+								<a href="queues.mqttmessagequeue.html#abandon" class="tsd-kind-icon">abandon</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#beginlisten" class="tsd-kind-icon">begin<wbr>Listen</a>
+								<a href="queues.mqttmessagequeue.html#beginlisten" class="tsd-kind-icon">begin<wbr>Listen</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#clear" class="tsd-kind-icon">clear</a>
+								<a href="queues.mqttmessagequeue.html#clear" class="tsd-kind-icon">clear</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#close" class="tsd-kind-icon">close</a>
+								<a href="queues.mqttmessagequeue.html#close" class="tsd-kind-icon">close</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#complete" class="tsd-kind-icon">complete</a>
+								<a href="queues.mqttmessagequeue.html#complete" class="tsd-kind-icon">complete</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#configure" class="tsd-kind-icon">configure</a>
+								<a href="queues.mqttmessagequeue.html#configure" class="tsd-kind-icon">configure</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#endlisten" class="tsd-kind-icon">end<wbr>Listen</a>
+								<a href="queues.mqttmessagequeue.html#endlisten" class="tsd-kind-icon">end<wbr>Listen</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#getcapabilities" class="tsd-kind-icon">get<wbr>Capabilities</a>
+								<a href="queues.mqttmessagequeue.html#getcapabilities" class="tsd-kind-icon">get<wbr>Capabilities</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#getname" class="tsd-kind-icon">get<wbr>Name</a>
+								<a href="queues.mqttmessagequeue.html#getname" class="tsd-kind-icon">get<wbr>Name</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#isopened" class="tsd-kind-icon">is<wbr>Opened</a>
+								<a href="queues.mqttmessagequeue.html#isopen" class="tsd-kind-icon">is<wbr>Open</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#listen" class="tsd-kind-icon">listen</a>
+								<a href="queues.mqttmessagequeue.html#listen" class="tsd-kind-icon">listen</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#movetodeadletter" class="tsd-kind-icon">move<wbr>ToDead<wbr>Letter</a>
+								<a href="queues.mqttmessagequeue.html#movetodeadletter" class="tsd-kind-icon">move<wbr>ToDead<wbr>Letter</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#open" class="tsd-kind-icon">open</a>
+								<a href="queues.mqttmessagequeue.html#open" class="tsd-kind-icon">open</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite tsd-is-protected">
-								<a href="mqttmessagequeue.html#openwithparams" class="tsd-kind-icon">open<wbr>With<wbr>Params</a>
+								<a href="queues.mqttmessagequeue.html#openwithparams" class="tsd-kind-icon">open<wbr>With<wbr>Params</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#peek" class="tsd-kind-icon">peek</a>
+								<a href="queues.mqttmessagequeue.html#peek" class="tsd-kind-icon">peek</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#peekbatch" class="tsd-kind-icon">peek<wbr>Batch</a>
+								<a href="queues.mqttmessagequeue.html#peekbatch" class="tsd-kind-icon">peek<wbr>Batch</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#readmessagecount" class="tsd-kind-icon">read<wbr>Message<wbr>Count</a>
+								<a href="queues.mqttmessagequeue.html#readmessagecount" class="tsd-kind-icon">read<wbr>Message<wbr>Count</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#receive" class="tsd-kind-icon">receive</a>
+								<a href="queues.mqttmessagequeue.html#receive" class="tsd-kind-icon">receive</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#renewlock" class="tsd-kind-icon">renew<wbr>Lock</a>
+								<a href="queues.mqttmessagequeue.html#renewlock" class="tsd-kind-icon">renew<wbr>Lock</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
-								<a href="mqttmessagequeue.html#send" class="tsd-kind-icon">send</a>
+								<a href="queues.mqttmessagequeue.html#send" class="tsd-kind-icon">send</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#sendasobject" class="tsd-kind-icon">send<wbr>AsObject</a>
+								<a href="queues.mqttmessagequeue.html#sendasobject" class="tsd-kind-icon">send<wbr>AsObject</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#setreferences" class="tsd-kind-icon">set<wbr>References</a>
+								<a href="queues.mqttmessagequeue.html#setreferences" class="tsd-kind-icon">set<wbr>References</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-protected">
-								<a href="mqttmessagequeue.html#subscribe" class="tsd-kind-icon">subscribe</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private">
-								<a href="mqttmessagequeue.html#tomessage" class="tsd-kind-icon">to<wbr>Message</a>
+								<a href="queues.mqttmessagequeue.html#subscribe" class="tsd-kind-icon">subscribe</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
-								<a href="mqttmessagequeue.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+								<a href="queues.mqttmessagequeue.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-variable tsd-is-not-exported">
-						<a href="../globals.html#async" class="tsd-kind-icon">async</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

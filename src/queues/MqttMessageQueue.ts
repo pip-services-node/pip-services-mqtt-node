@@ -1,3 +1,5 @@
+/** @module queues */
+/** @hidden */
 let async = require('async');
 
 import { ConnectionParams } from 'pip-services-components-node';
