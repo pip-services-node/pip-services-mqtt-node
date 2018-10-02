@@ -12,47 +12,47 @@ import { MessageEnvelop } from 'pip-services-messaging-node';
  *
  * topic:                         name of MQTT topic to subscribe
  * connection(s):
- *   discovery_key:               (optional) a key to retrieve the connection from IDiscovery
+ *   discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
  *   host:                        host name or IP address
  *   port:                        port number
  *   uri:                         resource URI or connection string with all parameters in it
  * credential(s):
- *   store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
+ *   store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
  *   username:                    user name
  *   password:                    user password
  *
  * ### References ###
  *
- * - *:logger:*:*:1.0             (optional) ILogger components to pass log messages
- * - *:counters:*:*:1.0           (optional) ICounters components to pass collected measurements
- * - *:discovery:*:*:1.0          (optional) IDiscovery services to resolve connections
- * - *:credential-store:*:*:1.0   (optional) Credential stores to resolve credentials
+ * - <code>*:logger:*:*:1.0</code>             (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>*:counters:*:*:1.0</code>           (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html ICounters]] components to pass collected measurements
+ * - <code>*:discovery:*:*:1.0</code>          (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
+ * - <code>*:credential-store:*:*:1.0</code>   (optional) Credential stores to resolve credentials
  *
  * @see [[MessageQueue]]
  * @see [[MessagingCapabilities]]
  *
  * ### Example ###
  *
- * let queue = new MqttMessageQueue("myqueue");
- * queue.configure(ConfigParams.fromTuples(
- *   "topic", "mytopic",
- *   "connection.protocol", "mqtt"
- *   "connection.host", "localhost"
- *   "connection.port", 1883
- * ));
+ *     let queue = new MqttMessageQueue("myqueue");
+ *     queue.configure(ConfigParams.fromTuples(
+ *       "topic", "mytopic",
+ *       "connection.protocol", "mqtt"
+ *       "connection.host", "localhost"
+ *       "connection.port", 1883
+ *     ));
  *
- * queue.open("123", (err) => {
- *     ...
- * });
+ *     queue.open("123", (err) => {
+ *         ...
+ *     });
  *
- * queue.send("123", new MessageEnvelop(null, "mymessage", "ABC"));
+ *     queue.send("123", new MessageEnvelop(null, "mymessage", "ABC"));
  *
- * queue.receive("123", (err, message) => {
- *     if (message != null) {
- *        ...
- *        queue.complete("123", message);
- *     }
- * });
+ *     queue.receive("123", (err, message) => {
+ *         if (message != null) {
+ *            ...
+ *            queue.complete("123", message);
+ *         }
+ *     });
  */
 export declare class MqttMessageQueue extends MessageQueue {
     private _client;

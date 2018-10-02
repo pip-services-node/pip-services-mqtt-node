@@ -74,19 +74,23 @@
 						validates them and generates connection options.</p>
 					</div>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>connection(s):
-						discovery_key:               (optional) a key to retrieve the connection from IDiscovery
-						host:                        host name or IP address
-						port:                        port number
-						uri:                         resource URI or connection string with all parameters in it
-						credential(s):
-						store_key:                   (optional) a key to retrieve the credentials from ICredentialStore
-						username:                    user name
-					password:                    user password</p>
+					<p>connection(s):</p>
+					<ul>
+						<li>discovery_key:               (optional) a key to retrieve the connection from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a></li>
+						<li>host:                        host name or IP address</li>
+						<li>port:                        port number</li>
+						<li>uri:                         resource URI or connection string with all parameters in it</li>
+					</ul>
+					<p>credential(s):</p>
+					<ul>
+						<li>store_key:                   (optional) a key to retrieve the credentials from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html" class="external">ICredentialStore</a></li>
+						<li>username:                    user name</li>
+						<li>password:                    user password</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><em>:discovery:</em>:*:1.0          (optional) IDiscovery services to resolve connections</li>
-						<li><em>:credential-store:</em>:*:1.0   (optional) Credential stores to resolve credentials</li>
+						<li><code><em>:discovery:</em>:*:1.0</code>          (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> services to resolve connections</li>
+						<li><code><em>:credential-store:</em>:*:1.0</code>   (optional) Credential stores to resolve credentials</li>
 					</ul>
 				</div>
 			</section>
@@ -136,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">_connection<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ConnectionResolver</span><span class="tsd-signature-symbol"> =&nbsp;new ConnectionResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L40">connect/MqttConnectionResolver.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L41">connect/MqttConnectionResolver.ts:41</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -151,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">_credential<wbr>Resolver<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CredentialResolver</span><span class="tsd-signature-symbol"> =&nbsp;new CredentialResolver()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L44">connect/MqttConnectionResolver.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L45">connect/MqttConnectionResolver.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -173,7 +177,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L150">connect/MqttConnectionResolver.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L151">connect/MqttConnectionResolver.ts:151</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -243,7 +247,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L51">connect/MqttConnectionResolver.ts:51</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L52">connect/MqttConnectionResolver.ts:52</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -274,7 +278,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L108">connect/MqttConnectionResolver.ts:108</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L109">connect/MqttConnectionResolver.ts:109</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -332,7 +336,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/7b9c92a/src/connect/MqttConnectionResolver.ts#L61">connect/MqttConnectionResolver.ts:61</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/connect/MqttConnectionResolver.ts#L62">connect/MqttConnectionResolver.ts:62</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
