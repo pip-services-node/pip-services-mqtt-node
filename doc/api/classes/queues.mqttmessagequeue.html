@@ -74,22 +74,28 @@
 					</div>
 					<p>MQTT is a popular light-weight protocol to communicate IoT devices.</p>
 					<h3 id="configuration-parameters">Configuration parameters</h3>
-					<p>topic:                         name of MQTT topic to subscribe
-						connection(s):
-						discovery_key:               (optional) a key to retrieve the connection from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a>
-						host:                        host name or IP address
-						port:                        port number
-						uri:                         resource URI or connection string with all parameters in it
-						credential(s):
-						store_key:                   (optional) a key to retrieve the credentials from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html" class="external">ICredentialStore</a>
-						username:                    user name
-					password:                    user password</p>
+					<ul>
+						<li>topic:                         name of MQTT topic to subscribe</li>
+						<li>connection(s):<ul>
+								<li>discovery_key:               (optional) a key to retrieve the connection from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a></li>
+								<li>host:                        host name or IP address</li>
+								<li>port:                        port number</li>
+								<li>uri:                         resource URI or connection string with all parameters in it</li>
+							</ul>
+						</li>
+						<li>credential(s):<ul>
+								<li>store_key:                   (optional) a key to retrieve the credentials from <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html" class="external">ICredentialStore</a></li>
+								<li>username:                    user name</li>
+								<li>password:                    user password</li>
+							</ul>
+						</li>
+					</ul>
 					<h3 id="references">References</h3>
 					<ul>
-						<li><code><em>:logger:</em>:*:1.0</code>             (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html" class="external">ILogger</a> components to pass log messages</li>
-						<li><code><em>:counters:</em>:*:1.0</code>           (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html" class="external">ICounters</a> components to pass collected measurements</li>
-						<li><code><em>:discovery:</em>:*:1.0</code>          (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> services to resolve connections</li>
-						<li><code><em>:credential-store:</em>:*:1.0</code>   (optional) Credential stores to resolve credentials</li>
+						<li><code>*:logger:*:*:1.0</code>             (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html" class="external">ILogger</a> components to pass log messages</li>
+						<li><code>*:counters:*:*:1.0</code>           (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html" class="external">ICounters</a> components to pass collected measurements</li>
+						<li><code>*:discovery:*:*:1.0</code>          (optional) <a href="https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html" class="external">IDiscovery</a> services to resolve connections</li>
+						<li><code>*:credential-store:*:*:1.0</code>   (optional) Credential stores to resolve credentials</li>
 					</ul>
 					<dl class="tsd-comment-tags">
 						<dt>see</dt>
@@ -209,7 +215,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.__constructor</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L72">queues/MqttMessageQueue.ts:72</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L72">queues/MqttMessageQueue.ts:72</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -315,7 +321,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.abandon</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L298">queues/MqttMessageQueue.ts:298</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L298">queues/MqttMessageQueue.ts:298</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -402,7 +408,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.clear</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L150">queues/MqttMessageQueue.ts:150</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L150">queues/MqttMessageQueue.ts:150</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -458,7 +464,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.close</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L130">queues/MqttMessageQueue.ts:130</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L130">queues/MqttMessageQueue.ts:130</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -514,7 +520,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.complete</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L282">queues/MqttMessageQueue.ts:282</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L282">queues/MqttMessageQueue.ts:282</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -596,7 +602,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.endListen</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L399">queues/MqttMessageQueue.ts:399</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L399">queues/MqttMessageQueue.ts:399</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -665,7 +671,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.isOpen</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L89">queues/MqttMessageQueue.ts:89</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L89">queues/MqttMessageQueue.ts:89</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -689,7 +695,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.listen</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L372">queues/MqttMessageQueue.ts:372</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L372">queues/MqttMessageQueue.ts:372</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -735,7 +741,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.moveToDeadLetter</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L311">queues/MqttMessageQueue.ts:311</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L311">queues/MqttMessageQueue.ts:311</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -837,7 +843,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.openWithParams</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L101">queues/MqttMessageQueue.ts:101</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L101">queues/MqttMessageQueue.ts:101</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -905,7 +911,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.peek</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L189">queues/MqttMessageQueue.ts:189</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L189">queues/MqttMessageQueue.ts:189</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -965,7 +971,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.peekBatch</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L208">queues/MqttMessageQueue.ts:208</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L208">queues/MqttMessageQueue.ts:208</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1032,7 +1038,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.readMessageCount</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L160">queues/MqttMessageQueue.ts:160</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L160">queues/MqttMessageQueue.ts:160</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1085,7 +1091,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.receive</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L222">queues/MqttMessageQueue.ts:222</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L222">queues/MqttMessageQueue.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1150,7 +1156,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.renewLock</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L268">queues/MqttMessageQueue.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L268">queues/MqttMessageQueue.ts:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1214,7 +1220,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 							<aside class="tsd-sources">
 								<p>Overrides MessageQueue.send</p>
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L175">queues/MqttMessageQueue.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L175">queues/MqttMessageQueue.ts:175</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1347,7 +1353,7 @@ queue.receive(<span class="hljs-string">"123"</span>, (err, message) =&gt; {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/2a72d72/src/queues/MqttMessageQueue.ts#L325">queues/MqttMessageQueue.ts:325</a></li>
+									<li>Defined in <a href="https://github.com/pip-services-node/pip-services-mqtt-node/blob/745a2c1/src/queues/MqttMessageQueue.ts#L325">queues/MqttMessageQueue.ts:325</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">

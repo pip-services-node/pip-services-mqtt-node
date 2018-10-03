@@ -10,23 +10,23 @@ import { MessageEnvelop } from 'pip-services-messaging-node';
  *
  * ### Configuration parameters ###
  *
- * topic:                         name of MQTT topic to subscribe
- * connection(s):
- *   discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
- *   host:                        host name or IP address
- *   port:                        port number
- *   uri:                         resource URI or connection string with all parameters in it
- * credential(s):
- *   store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
- *   username:                    user name
- *   password:                    user password
+ * - topic:                         name of MQTT topic to subscribe
+ * - connection(s):
+ *   - discovery_key:               (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ *   - host:                        host name or IP address
+ *   - port:                        port number
+ *   - uri:                         resource URI or connection string with all parameters in it
+ * - credential(s):
+ *   - store_key:                   (optional) a key to retrieve the credentials from [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/auth.icredentialstore.html ICredentialStore]]
+ *   - username:                    user name
+ *   - password:                    user password
  *
  * ### References ###
  *
- * - <code>*:logger:*:*:1.0</code>             (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
- * - <code>*:counters:*:*:1.0</code>           (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html ICounters]] components to pass collected measurements
- * - <code>*:discovery:*:*:1.0</code>          (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
- * - <code>*:credential-store:*:*:1.0</code>   (optional) Credential stores to resolve credentials
+ * - <code>\*:logger:\*:\*:1.0</code>             (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>\*:counters:\*:\*:1.0</code>           (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/count.icounters.html ICounters]] components to pass collected measurements
+ * - <code>\*:discovery:\*:\*:1.0</code>          (optional) [[https://rawgit.com/pip-services-node/pip-services-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connections
+ * - <code>\*:credential-store:\*:\*:1.0</code>   (optional) Credential stores to resolve credentials
  *
  * @see [[MessageQueue]]
  * @see [[MessagingCapabilities]]
